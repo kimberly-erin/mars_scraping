@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>They're out there.</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Truth About Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Check for Martians!</a></p>
+
+        </div>
+
+            {% for mars in planet_mars %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>Latest Mars News</h1>
+                                <h3>{{ mars.NASA_Headline.headline }}</h3>
+                                <p class="card-text"><h4>{{ mars.NASA_Headline.article }} <a href="{{ mars.NASA_Headline.article_url}}">Read more</a>.</a></h4></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <img height="450px" src="{{ mars.Featured_Pic }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <h3>Current Weather on Mars</h3>
+                            {{ mars.Mars_Weather }}
+                            <h3>Mars Facts</h3>
+                            {{ mars.Mars_Facts|safe }}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12" > 
+                        <center><h2><br>Mars Hemispheres</h2></center>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <center>
+                                <img height="350px" src="{{ mars.Hemispheres.0.img_url }}">
+                                <h4>{{ mars.Hemispheres.0.title }}</h4>
+                            </center>
+                        </div>
+                        <div class="card">
+                            <center>
+                                <img height="350px" src="{{ mars.Hemispheres.2.img_url }}">
+                                <h4>{{ mars.Hemispheres.2.title }}</h4>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <center>
+                                <img height="350px" src="{{ mars.Hemispheres.1.img_url }}">
+                                <h4>{{ mars.Hemispheres.1.title }}</h4>
+                            </center>
+                        </div>
+                    </div>
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <center>
+                                <img height="350px" src="{{ mars.Hemispheres.3.img_url }}">
+                                <h4>{{ mars.Hemispheres.3.title }}</h4>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
